@@ -1,37 +1,42 @@
-import { useState, useEffect } from "react";
+import { RouterProvider, createBrowserRouter, } from "react-router-dom";
+import Layout from "./layouts/layout";
+import Products from "./views/products";
+import ProductDetail from "./views/product.detail";
 
-import Nav from './components/nav'
-import Product from "./components/product";
+const router = createBrowserRouter([
+  {
+    id: "root",
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <Products />,
+      },
+      {
+        path: "products",
+        element: <Products />,
+      },
+      {
+        path: "products/:id",
+        element: <ProductDetail />,
+      },
+    ],
+  },
+  {
+    path: "/logout",
+    Component: logout
+  },
+]);
 
-import axios from "axios";
-
-function App() {
-  const BASE_URL = "https://api.escuelajs.co/api/v1/products";
-  const [products, setProduct] = useState([]);
-
-  useEffect(() => {
-    getProducts();
-  }, []);
-
-  const getProducts = async () => {
-    const response = await axios.get(BASE_URL);
-    setProduct(response.data);
-  }
-
-  return (
-    <>
-      <Nav />
-      <div className='container mt-5'>
-        <div className="row">
-          {
-            products.map((product) =>
-              <Product product={product} key={product.id} />
-            )
-          }
-        </div>
-      </div>
-    </>
-  )
+function logout() {
+  return (<div>
+    onur
+  </div>)
 }
 
-export default App
+export default function App() {
+  return (
+    <RouterProvider router={router} />
+  );
+}
