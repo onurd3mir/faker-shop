@@ -18,15 +18,13 @@ function Products() {
     }
 
     return (
-        <div className='container mt-5'>
-            <div className="row">
+        <div className="row">
                 {
                     products.map((product) =>
                         <Product product={product} key={product.id} />
                     )
                 }
             </div>
-        </div>
     )
 }
 

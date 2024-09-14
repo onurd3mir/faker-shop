@@ -7,8 +7,7 @@ function Product({ product }) {
                 <img src={product.images[0].replace("/\/","")} className="card-img-top" alt={product.title} />
                 <div className="card-body">
                     <h5 className="card-title">{product.title}</h5>
-                    <p className="card-text">{product.description.substring(0, 200)}...</p>
-                    <Link to={`/products/${product.id}`} className="btn btn-primary"> {product.price} Detay</Link>
+                    <Link to={`/products/${product.id}`} className="btn btn-primary ">Detail</Link>
                 </div>
             </div>
         </div>
