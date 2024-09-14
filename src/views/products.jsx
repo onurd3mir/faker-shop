@@ -5,7 +5,7 @@ import Product from "../components/product";
 import axios from "axios";
 
 function Products() {
-    const BASE_URL = "https://api.escuelajs.co/api/v1/products";
+    const BASE_URL = "https://api.escuelajs.co/api/v1/products?offset=0&limit=36";
     const [products, setProduct] = useState([]);
 
     useEffect(() => {
@@ -19,12 +19,12 @@ function Products() {
 
     return (
         <div className="row">
-                {
-                    products.map((product) =>
-                        <Product product={product} key={product.id} />
-                    )
-                }
-            </div>
+            {
+                products.map((product) =>
+                    <Product product={product} key={product.id} />
+                )
+            }
+        </div>
     )
 }
 
